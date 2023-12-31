@@ -1,0 +1,32 @@
+#!/bin/bash
+
+PWD=/Users/ijiwon/Repos/learnkafka
+
+function call1() {
+    curl http://localhost:8000/
+}
+function call2() {
+    curl http://localhost:3000/
+}
+
+function prod1() {
+    cd $PWD/producer_fastapi && uvicorn main:app --reload
+}
+
+function prod2() {
+    cd $PWD/producer_express && node --watch index
+}
+
+function cons1() {
+    cd $PWD/consumer_nodejs && node --watch index
+}
+
+function cons2() {
+    cd $PWD/consumer_nestjs && yarn start:dev
+}
+
+function cons3() {
+    cd $PWD/consumer_fastapi && python main.py
+}
+
+$@
